@@ -14,9 +14,9 @@ import board.model.vo.Board;
 import board.model.vo.PageInfo;
 
 /**
- * 게시판 서블릿입니다.
+ * 게시판 게시글 상세보기 서블릿입니다.
  * 
- * @author user1
+ * @author crckrjck
  */
 @WebServlet("/list.bo")
 public class BoardListServlet extends HttpServlet {
