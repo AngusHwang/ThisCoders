@@ -27,7 +27,7 @@ public class BoardDao {
 	}
 
 	/**
-	 * 전체 게시글의 수(COUNT)를 구하는 DAO입니다..
+	 * 전체 게시글의 수(COUNT)를 구하는 DAO입니다.
 	 * 메모리관리를 위해 테이블에서 BOARD_NO만을 SELECT COUNT()합니다.
 	 * 삭제된 게시글(BOARD_DELETE_YN = 'N')의 경우 참조하지 않습니다.
 	 * @param conn
@@ -53,7 +53,6 @@ public class BoardDao {
 	}
 
 	/**
-	 * 
 	 * 페이지의 게시물을 조회하는 DAO입니다.
 	 * 메모리 관리를 위해 currentPage에만 해당되는 게시물만을 조회합니다.
 	 * 삭제된 게시글(BOARD_DELETE_YN = 'N')의 경우 참조하지 않습니다.
@@ -94,6 +93,40 @@ public class BoardDao {
 			close(pstmt);
 		}
 		return bList;
+	}
+
+	/**
+	 * 게시물을 상세조회하는 DAO입니다.
+	 * boardNo를 매개변수로하여 해당 게시글만 board객체에 담아옵니다.
+	 * @param conn
+	 * @param boardNo
+	 * @return board
+	 */
+	public Board selectBoard(Connection conn, int boardNo) {
+		Board board = null;
+		PreparedStatement pstmt = null;
+		ResultSet rset = null;
+		try {
+			String query = prop.getProperty("selectBoard");
+			pstmt = conn.prepareStatement(query);
+			pstmt.setInt(1, boardNo);
+			rset = pstmt.executeQuery();
+			if(rset.next()) board = new Board(
+					rset.getInt("BOARD_NO"),
+					rset.getInt("BOARD_COUNT"),
+					rset.getString("BOARD_TITLE"),
+					rset.getString("BOARD_CONTENT"),
+					rset.getString("AVA_NICKNAME"),
+					rset.getString("CAT_NAME"),
+					rset.getDate("BOARD_WRITE_DATE"),
+					rset.getDate("BOARD_UPDATE_DATE"));
+		}catch(Exception e) {
+			e.printStackTrace();
+		}finally {
+			close(rset);
+			close(pstmt);
+		}
+		return board;
 	}
 	
 	

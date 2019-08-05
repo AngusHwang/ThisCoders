@@ -32,5 +32,16 @@ public class BoardService {
 		Connection conn = getConnection();
 		return new BoardDao().selectList(conn, currentPage, limit);
 	}
+
+	/**
+	 * DB에 있는 게시물 하나를 가져와서 상세보기하는 서비스입니다.
+	 * boardNo를 매개변수로하여 해당 게시글을 참조합니다.
+	 * @param boardNo
+	 * @return board
+	 */
+	public Board selectBoard(int boardNo) {
+		Connection conn = getConnection();
+		return new BoardDao().selectBoard(conn, boardNo);
+	}
 	
 }

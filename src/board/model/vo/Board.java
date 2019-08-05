@@ -23,6 +23,18 @@ public class Board {
 		this.boardUpdateDate = boardUpdateDate;
 		this.boardDeleteYn = boardDeleteYn;
 	}
+	/**
+	 * 게시물 리스트에 불러올때 쓰는 VO, 상세보기에도 쓸거임
+	 * 
+	 * @param boardNo
+	 * @param boardCount
+	 * @param boardTitle
+	 * @param boardContent
+	 * @param boardWriter
+	 * @param catName
+	 * @param boardWriteDate
+	 * @param boardUpdateDate
+	 */
 	public Board(int boardNo, int boardCount, String boardTitle, String boardContent, String boardWriter,
 			String catName, Date boardWriteDate, Date boardUpdateDate) {
 		super();
@@ -35,7 +47,7 @@ public class Board {
 		this.boardWriteDate = boardWriteDate;
 		this.boardUpdateDate = boardUpdateDate;
 	}
-
+	
 	public int getBoardNo() {
 		return boardNo;
 	}
