@@ -13,7 +13,7 @@
 	<h1 align="center"><%= msg %></h1>
 	
 	<div align="center">
-		<button onclick="location.href='<%=request.getContextPath()%>'">
+		<button onclick="location.href='<%=request.getContextPath()%>/common/main.jsp'">
 		메인으로 돌아가기
 		
 		</button>

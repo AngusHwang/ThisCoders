@@ -1,5 +1,19 @@
+<%@page import="member.model.vo.Avatar"%>
+<%@page import="board.model.vo.Board"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%
+	Board board = (Board)request.getAttribute("board");
+	int boardNo = board.getBoardNo();
+	int boardCount = board.getBoardCount();
+	String boardWriter = board.getBoardWriter();
+	String boardTitle = board.getBoardTitle();
+	String boardContent = board.getBoardContent();
+	
+	Avatar ava = (Avatar)request.getAttribute("avatar");
+	String avaNickname = ava.getAvaNickname();
+	String avaPortrait = ava.getAvaPortrait();
+%>    
 <!DOCTYPE html>
 <html>
 <head>
@@ -25,32 +39,25 @@
    		<div class="container content">
    			<div class="col-md-12">
    				<div class="page-header">
-	   				<h3>제목</h3>
+	   				<h3><%=boardTitle %></h3>
    				</div>
    			</div>
    			<a id="post" class="comment-link"></a>
    			<div class = "col-md-12 comment">
    				<div class="panel panel-default">
    					<div class="panel-heading">
-   						<h4 class="panel-title"><a href="/user/donghp">닉네임</a>&nbsp;&nbsp;&nbsp;
-   						<a href = "#post" rel="tooltip" data-placement="top" title="2019년 8월 4일 14시 18분 39초" class = "tooltip-click real-time-update" data-timestamp="1564895919" data-method="from-now">1일 전</a>
-   						<span class = "like-box" style="display:none;">&nbsp;&nbsp;&nbsp;
-   							<span class = "glyphicon glyphicon-thumbs-up"></span>&nbsp;
-   							<span class="like-count">0</span>
-   						</span>
-  						<div class = "pull-right">
-   							<span class= "post_like" >조회수 111</span>
-   						</div>
+   						<h4 class="panel-title"><a href="/user/<%=avaNickname%>"><%=avaNickname %></a>&nbsp;&nbsp;&nbsp;
 						</h4>
+  						<span>작성일시 : <%=board.getBoardWriteDate() %></span>
+  						<div class = "pull-right">
+   							<span class= "post_like" >조회수 <%=boardCount %></span>
+   						</div>
 					</div>
    								
  					<div class="panel-body">
  						<div class = "content post" style="line-height:30px;">
    									<!-- 내용 삽입부분  -->
-   						</div>
-   						<div class="source CodeMirror-readonly">
-   							<textarea class="form-control no-mathjax codemirror-textarea" data-mime="text/x-c++src" data-wrap="true" readonly style="resize : none; cursor: initial;">
-	   						</textarea>
+   									<%=boardContent %>
    						</div>
    					</div>
    				</div>

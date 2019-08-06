@@ -137,8 +137,9 @@ int limit = pageInfo.getLimit();
     		}).mouseleave(function(){
     			$(this).parent().parent().css({"background":"lightgray"});
     		}).click(function(){
-    			var bno = $(this).parent().parent().children().eq(0).text();
-    			location.href="<%= request.getContextPath() %>/detail.bo?bno="+bno;
+    			var boardNo = $(this).parent().parent().children().eq(0).text();
+    			console.log(boardNo);
+    			location.href="<%= request.getContextPath() %>/detail.bo?boardNo="+boardNo;
     		});
     		
     	});

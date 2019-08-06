@@ -11,6 +11,7 @@ import java.util.ArrayList;
 import java.util.Properties;
 
 import board.model.vo.Board;
+import member.model.vo.Avatar;
 
 public class BoardDao {
 
@@ -98,12 +99,15 @@ public class BoardDao {
 	/**
 	 * 게시물을 상세조회하는 DAO입니다.
 	 * boardNo를 매개변수로하여 해당 게시글만 board객체에 담아옵니다.
+	 * 아바타의 정보도 게시글에 담기기에 두개의 객체를 리스트에 담아 리턴합니다.
 	 * @param conn
 	 * @param boardNo
-	 * @return board
+	 * @return ArrayList<Object>
 	 */
-	public Board selectBoard(Connection conn, int boardNo) {
+	public ArrayList<Object> selectBoard(Connection conn, int boardNo) {
+		ArrayList<Object> al = new ArrayList<Object>();
 		Board board = null;
+		Avatar avatar = null;
 		PreparedStatement pstmt = null;
 		ResultSet rset = null;
 		try {
@@ -111,22 +115,27 @@ public class BoardDao {
 			pstmt = conn.prepareStatement(query);
 			pstmt.setInt(1, boardNo);
 			rset = pstmt.executeQuery();
-			if(rset.next()) board = new Board(
-					rset.getInt("BOARD_NO"),
-					rset.getInt("BOARD_COUNT"),
-					rset.getString("BOARD_TITLE"),
-					rset.getString("BOARD_CONTENT"),
-					rset.getString("AVA_NICKNAME"),
-					rset.getString("CAT_NAME"),
-					rset.getDate("BOARD_WRITE_DATE"),
-					rset.getDate("BOARD_UPDATE_DATE"));
+			while(rset.next()) {
+				board = new Board(
+				rset.getInt("BOARD_NO"),
+				rset.getInt("BOARD_COUNT"),
+				rset.getString("BOARD_TITLE"),
+				rset.getString("BOARD_CONTENT"),
+				rset.getString("AVA_NICKNAME"),
+				rset.getString("CAT_NAME"),
+				rset.getDate("BOARD_WRITE_DATE"),
+				rset.getDate("BOARD_UPDATE_DATE"));
+				avatar = new Avatar("", rset.getString("AVA_PORTRAIT"), rset.getString("AVA_NICKNAME"), "");
+				al.add(board);
+				al.add(avatar);
+			}
 		}catch(Exception e) {
 			e.printStackTrace();
 		}finally {
 			close(rset);
 			close(pstmt);
 		}
-		return board;
+		return al;
 	}
 
 	/**
