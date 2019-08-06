@@ -3,13 +3,72 @@ package member.model.vo;
 import java.sql.Date;
 
 public class Member {
-	private String userId, userPwd, userNickname, userBirthday, userEmail, userAddr, userPhone, userAddCerti, userAddCarrer, userAddAward, userAddAvailLang;
+	private String userId, userPwd, userNickname, userName, userBirthday, userEmail, userAddr, userPhone, userAddCerti, userAddCarrer, userAddAward, userAddAvailLang;
 	private Date enrollDate, updateDate;
 	private char status, adminYn;
+	
+	
 	public Member() {}
 	
+	/**
+	 * 모든게 다있는 생성자임
+	 * @param userId
+	 * @param userPwd
+	 * @param userNickname
+	 * @param userName
+	 * @param userBirthday
+	 * @param userEmail
+	 * @param userAddr
+	 * @param userPhone
+	 * @param userAddCerti
+	 * @param userAddCarrer
+	 * @param userAddAward
+	 * @param userAddAvailLang
+	 * @param enrollDate
+	 * @param updateDate
+	 * @param status
+	 * @param adminYn
+	 */
+	public Member(String userId, String userPwd, String userNickname, String userName, String userBirthday,
+			String userEmail, String userAddr, String userPhone, String userAddCerti, String userAddCarrer,
+			String userAddAward, String userAddAvailLang, Date enrollDate, Date updateDate, char status, char adminYn) {
+		super();
+		this.userId = userId;
+		this.userPwd = userPwd;
+		this.userNickname = userNickname;
+		this.userName = userName;
+		this.userBirthday = userBirthday;
+		this.userEmail = userEmail;
+		this.userAddr = userAddr;
+		this.userPhone = userPhone;
+		this.userAddCerti = userAddCerti;
+		this.userAddCarrer = userAddCarrer;
+		this.userAddAward = userAddAward;
+		this.userAddAvailLang = userAddAvailLang;
+		this.enrollDate = enrollDate;
+		this.updateDate = updateDate;
+		this.status = status;
+		this.adminYn = adminYn;
+	}
 	
-	
+	/**
+	 * 하나 빼먹어서 냅둠, userName이 없음
+	 * @param userId
+	 * @param userPwd
+	 * @param userNickname
+	 * @param userBirthday
+	 * @param userEmail
+	 * @param userAddr
+	 * @param userPhone
+	 * @param userAddCerti
+	 * @param userAddCarrer
+	 * @param userAddAward
+	 * @param userAddAvailLang
+	 * @param enrollDate
+	 * @param updateDate
+	 * @param status
+	 * @param adminYn
+	 */
 	public Member(String userId, String userPwd, String userNickname, String userBirthday, String userEmail,
 			String userAddr, String userPhone, String userAddCerti, String userAddCarrer, String userAddAward,
 			String userAddAvailLang, Date enrollDate, Date updateDate, char status, char adminYn) {
@@ -35,13 +94,14 @@ public class Member {
 	/**
 	 * 회원가입 할 때 쓰는 생성자입니다.
 	 */
-	public Member(String userId, String userPwd, String userNickname, String userBirthday, String userEmail,
+	public Member(String userId, String userPwd, String userNickname, String userName, String userBirthday, String userEmail,
 			String userAddr, String userPhone, String userAddCerti, String userAddCarrer, String userAddAward,
 			String userAddAvailLang) {
 		super();
 		this.userId = userId;
 		this.userPwd = userPwd;
 		this.userNickname = userNickname;
+		this.userName = userName;
 		this.userBirthday = userBirthday;
 		this.userEmail = userEmail;
 		this.userAddr = userAddr;
@@ -51,6 +111,38 @@ public class Member {
 		this.userAddAward = userAddAward;
 		this.userAddAvailLang = userAddAvailLang;
 	}
+	
+	
+	/**
+	 * 로그인에 필요한 생성자입니다.
+	 * @param userId
+	 * @param userPwd
+	 * @param userNickname
+	 * @param userName
+	 * @param userBirthday
+	 * @param userEmail
+	 * @param userAddr
+	 * @param userPhone
+	 * @param enrollDate
+	 * @param updateDate
+	 * @param adminYn
+	 */
+	public Member(String userId, String userPwd, String userNickname, String userName, String userBirthday,
+			String userEmail, String userAddr, String userPhone, Date enrollDate, Date updateDate, char adminYn) {
+		super();
+		this.userId = userId;
+		this.userPwd = userPwd;
+		this.userNickname = userNickname;
+		this.userName = userName;
+		this.userBirthday = userBirthday;
+		this.userEmail = userEmail;
+		this.userAddr = userAddr;
+		this.userPhone = userPhone;
+		this.enrollDate = enrollDate;
+		this.updateDate = updateDate;
+		this.adminYn = adminYn;
+	}
+
 	public String getUserId() {
 		return userId;
 	}
@@ -68,6 +160,13 @@ public class Member {
 	}
 	public void setUserNickname(String userNickname) {
 		this.userNickname = userNickname;
+	}
+	
+	public String getUserName() {
+		return userName;
+	}
+	public void setUserName(String userName) {
+		this.userName = userName;
 	}
 	public String getUserBirthday() {
 		return userBirthday;

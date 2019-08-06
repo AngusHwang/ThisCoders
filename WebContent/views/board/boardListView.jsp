@@ -28,13 +28,19 @@ int limit = pageInfo.getLimit();
     <link rel="stylesheet" href="https://ddo7jzca0m2vt.cloudfront.net/css/pace.css">
     <script async src="https://www.googletagmanager.com/gtag/js?id=UA-10874097-3"></script>
         <title>게시판</title>
+    <style>
+    
+    </style>
     </head>
+    
     <body>
+    	<%@ include file="../common/menubar.jsp" %>
+    	<div class="margin-bottom-60"></div>
         <div class="container content">
             <div class="margin-bottom-30">
 	            <div class="col-md-12">
 	                <div class="table-responsive">
-	                    <table class = "table table-bordered table-striped" style="width:100%;">
+	                    <table class = "table table-bordered" style="width:100%;" id="listArea">
 	                        <thead>
 	                            <tr>
 	                                <th style="width:7%;">글번호</th>
@@ -47,7 +53,6 @@ int limit = pageInfo.getLimit();
 	                        </thead>
 	                        <tbody>
 	                        
-	                        
 	                        	<% if(bList.isEmpty()){ %>
 	                        	<tr>
 	                        		<td colspan="6">등록된 게시글이 없습니다</td>
@@ -56,7 +61,7 @@ int limit = pageInfo.getLimit();
 	                        		<% for(int i = 0; i < bList.size(); i++){ %>
 	                        	<tr>
 	                        		<td><%=bList.get(i).getBoardNo() %></td>
-	                        		<td><%=bList.get(i).getBoardTitle() %></td>
+	                        		<td><a style="text-decoration: none; color : #333;">&nbsp;&nbsp;<%=bList.get(i).getBoardTitle() %></a></td>
 	                        		<td><%=bList.get(i).getCatName() %></td>
 	                        		<td><%=bList.get(i).getBoardWriter() %></td>
 	                        		<td><%=bList.get(i).getBoardCount() %></td>
@@ -66,6 +71,11 @@ int limit = pageInfo.getLimit();
 	                        	<%} %>
 	                        </tbody>
 	                    </table>
+	                    <div align="right">
+                 		<%-- <% if(loginUser != null){ %> --%>
+	                    	<button type="button" onclick="location.href='<%=request.getContextPath()%>/insertForm.bo'" class="btn btn-primary">글쓰기</button>
+                    	<%-- <% } %> --%>
+	                    </div>
 	                </div>
 	            </div>
            		<div class = "col-md-12">
@@ -83,13 +93,57 @@ int limit = pageInfo.getLimit();
 						</ul>
 					</div>
 				</div>
+				<div class = "col-md-12 text-center">
+					<form class = "form-inline" role="form" action="/board/search" method="post">
+						<div class = "form-group">
+							<select class="form-control" name="search_scope">
+								<option value="everything" >전체</option>
+								<option value="subject" >제목</option>
+								<option value="boardno" >글 번호</option>
+								<option value="author" >작성자</option>
+							</select>
+						</div>
+						<div class = "form-group">
+							<input type="text" class="form-control" name = "search_term" placeholder="" value="">
+						</div>
+						<input type="hidden" value="all" name="search_category">
+						<button type="submit" class="btn-u btn-u-blue">검색</button>
+					</form>
+				</div>
             </div>
         </div>
-    <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+        
+        
     <script>
+    	// 페이징 처리하는 스크립트
 	    function doPagingClick(clicknum){
 	        location.href = "<%= request.getContextPath() %>/list.bo?currentPage="+clicknum;
 	    }
     </script>
+    <script>
+    	// 게시물 마우스호버 이벤트
+    	$(function(){
+    		$("#listArea td").mouseenter(function(){
+    			$(this).parent().css({"background":"lightgray"});
+    		}).mouseleave(function(){
+    			$(this).parent().css({"background":""});
+    		});
+
+    		$("#listArea td a").mouseenter(function(){
+    			
+    			$(this).css({"cursor":"pointer"});
+    			$(this).parent().parent().css({"background":"lightgray"});
+    			
+    		}).mouseleave(function(){
+    			$(this).parent().parent().css({"background":"lightgray"});
+    		}).click(function(){
+    			var bno = $(this).parent().parent().children().eq(0).text();
+    			location.href="<%= request.getContextPath() %>/detail.bo?bno="+bno;
+    		});
+    		
+    	});
+    </script>
+    <div class="margin-bottom-60"></div>
+	<%@ include file="../common/footer.jsp"%>
     </body>
 </html>
