@@ -1,6 +1,6 @@
 package board.model.service;
 
-import static common.JDBCTemplate.getConnection;
+import static common.JDBCTemplate.*;
 
 import java.sql.Connection;
 import java.util.ArrayList;
@@ -42,6 +42,19 @@ public class BoardService {
 	public Board selectBoard(int boardNo) {
 		Connection conn = getConnection();
 		return new BoardDao().selectBoard(conn, boardNo);
+	}
+
+	/**
+	 * 게시글 작성 서비스 입니다.
+	 * @param board
+	 * @return result
+	 */
+	public int insertBoard(Board board) {
+		Connection conn = getConnection();
+		int result = new BoardDao().insertBoard(conn, board);
+		if(result>0)commit(conn);
+		else rollback(conn);
+		return result;
 	}
 	
 }

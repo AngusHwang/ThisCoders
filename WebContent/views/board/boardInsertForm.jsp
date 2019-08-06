@@ -29,7 +29,7 @@
     	<div class="container content">
 			<div class="row">
 				<div class="col-md-12">
-					<form action="" method="post" class = "form-horizontal" id = "board_write_form">
+					<form action="<%= request.getContextPath() %>/insert.bo" method="post" class = "form-horizontal" id = "board_write_form">
 					<div class="form-group">
 						<label class="col-md-2 control-label" for="board_subject">제목</label>
 						<div class="col-md-5">
@@ -40,11 +40,11 @@
 						<label class="col-md-2 control-label" for="board_category">카테고리</label>
 						<div class="col-md-2">
 							<select id="board_category" name="board_category" onchange="categoryChanged()" class="form-control">
-								<option value="2" selected>자유</option>
-								<option value="3" >질문</option>
-								<option value="6" >오타/오역/요청</option>
-								<option value="9" >홍보</option>
-								<option value="11" >Beta 문제 수정 요청</option>
+								<option value="10" selected>자유</option>
+								<option value="20" >질문</option>
+								<option value="30" >정보</option>
+								<option value="40" >요청/신고/건의</option>
+								<option value="50" >기타</option>
 							</select>
 						</div>
 					</div>

@@ -128,6 +128,31 @@ public class BoardDao {
 		}
 		return board;
 	}
+
+	/**
+	 * 게시글 작성 DAO입니다. 
+	 * @param conn
+	 * @param board
+	 * @return result
+	 */
+	public int insertBoard(Connection conn, Board board) {
+		int result = 0;
+		PreparedStatement pstmt = null;
+		try {
+			String query = prop.getProperty("insertBoard");
+			pstmt = conn.prepareStatement(query);
+			pstmt.setString(1, board.getBoardTitle());
+			pstmt.setString(2, board.getBoardContent());
+			pstmt.setString(3, board.getBoardWriter());
+			pstmt.setInt(4, Integer.parseInt(board.getCatName()));
+			result = pstmt.executeUpdate();
+		}catch(Exception e) {
+			e.printStackTrace();
+		}finally {
+			close(pstmt);
+		}
+		return result;
+	}
 	
 	
 }
