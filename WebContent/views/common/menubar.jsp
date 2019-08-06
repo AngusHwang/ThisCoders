@@ -110,7 +110,7 @@ li {
 			<div id="header-bottom-menu">
 
 				<div id="main-logo" style="float: left; width: 200px; height: 100%;">
-					<img src="../../images/menubar/logo.png" width="100%" height="100%">
+					<img src="<%=request.getContextPath()%>/images/menubar/logo.png" width="100%" height="100%">
 				</div>
 
 				<div id="menu-bar">
@@ -127,7 +127,7 @@ li {
 						<a href="#">알고리즘</a>
 					</div>
 					<div id="menu">
-						<a href="#">게시판</a>
+						<a href="<%= request.getContextPath() %>/list.bo?currentPage=1">게시판</a>
 					</div>
 					<div id="menu">
 						<a href="#">프로젝트</a>

@@ -10,7 +10,7 @@
 <html lang="ko">
     <head>
     <meta charset="UTF-8">
-        <title>게시글 상세보기</title>
+        <title>게시글 작성하기</title>
 	    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.2.0/css/bootstrap.min.css">
 	    <link rel="stylesheet" href="https://ddo7jzca0m2vt.cloudfront.net/unify/css/style.css?version=20190723">
 	    <link href="https://fonts.googleapis.com/css?family=Noto+Sans+KR:400,700|Open+Sans:400,400i,700,700i|Source+Code+Pro&amp;subset=korean" rel="stylesheet">
@@ -26,13 +26,15 @@
 		<link type="text/css" rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/chosen/1.8.7/chosen.min.css">
     </head>
     <body>
+       	<%@ include file="../common/menubar.jsp" %>
+ 		<div class="margin-bottom-60"></div>
     	<div class="container content">
 			<div class="row">
 				<div class="col-md-12">
 					<form action="<%= request.getContextPath() %>/insert.bo" method="post" class = "form-horizontal" id = "board_write_form">
 					<div class="form-group">
 						<label class="col-md-2 control-label" for="board_subject">제목</label>
-						<div class="col-md-5">
+						<div class="col-md-8">
 							<input type="text" class="form-control" placeholder="" name="board_subject" value="">
 						</div>
 					</div>
@@ -50,13 +52,13 @@
 					</div>
 					<div class="form-group">
 						<label class="col-md-2 control-label" for="board_content">내용</label>
-						<div class="col-md-10">
+						<div class="col-md-8">
 							<textarea id="board_content" name="board_content" rows="15"  class = "form-control change-to-redactor" style="display:none;"></textarea>
 						</div>
 					</div>
 					<input type="hidden" name="csrf_key" value="ea64f42538a7e57646c0d71b9130351e">
 					<div class = "form-group">
-						<div class = "col-md-offset-2 col-md-10 ">
+						<div class = "col-md-offset-2 col-md-8 " align ="right">
 							<button type="submit" class="btn btn-primary">글쓰기</button>				
 						</div>
 					</div>
@@ -64,6 +66,8 @@
 				</div>
 			</div>
 		</div>
+		<div class="margin-bottom-60"></div>
+	<%@ include file="../common/footer.jsp"%>
     </body>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/noty/3.1.4/noty.min.js"></script>
     <script type="text/x-mathjax-config">
