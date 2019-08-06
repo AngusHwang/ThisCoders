@@ -1,5 +1,15 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%@ page import = "member.model.vo.Member" %>
+<%
+	// session 객체에 담겨진 loginUser 객체
+	Member loginUser = (Member)session.getAttribute("loginUser");
+	
+	
+	// 회원가입 성공시 메세지 출력
+	String msg = (String)session.getAttribute("msg");
+
+%>	
 <!DOCTYPE html>
 <html>
 <head>
@@ -87,7 +97,7 @@ li {
 	text-indent: -5px;
 }
 </style>
-<title>Insert title here</title>
+<title>상단 메뉴바</title>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 </head>
 <body>
@@ -117,7 +127,7 @@ li {
 						<a href="#">알고리즘</a>
 					</div>
 					<div id="menu">
-						<a href="#">인재정보</a>
+						<a href="#">게시판</a>
 					</div>
 					<div id="menu">
 						<a href="#">프로젝트</a>

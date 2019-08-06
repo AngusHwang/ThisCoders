@@ -13,7 +13,7 @@ import board.model.vo.Board;
 
 
 /**
- * 게시판 서블릿입니다.
+ * 게시판 내용 상세보기 서블릿입니다.
  * 
  * @author crckrjck
  */
