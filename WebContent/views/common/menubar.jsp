@@ -110,7 +110,9 @@ li {
 			<div id="header-bottom-menu">
 
 				<div id="main-logo" style="float: left; width: 200px; height: 100%;">
-					<img src="<%=request.getContextPath()%>/images/menubar/logo.png" width="100%" height="100%">
+					<a href="<%=request.getContextPath() %>/views/common/main.jsp">
+						<img src="<%=request.getContextPath()%>/images/menubar/logo.png" width="100%" height="100%">
+					</a>
 				</div>
 
 				<div id="menu-bar">

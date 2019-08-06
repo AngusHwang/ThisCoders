@@ -36,10 +36,11 @@ public class BoardService {
 	/**
 	 * DB에 있는 게시물 하나를 가져와서 상세보기하는 서비스입니다.
 	 * boardNo를 매개변수로하여 해당 게시글을 참조합니다.
+	 * 두개의 객체를 필요로하기에 리스트에 담아 리턴합니다.
 	 * @param boardNo
-	 * @return board
+	 * @return ArrayList
 	 */
-	public Board selectBoard(int boardNo) {
+	public ArrayList<Object> selectBoard(int boardNo) {
 		Connection conn = getConnection();
 		return new BoardDao().selectBoard(conn, boardNo);
 	}

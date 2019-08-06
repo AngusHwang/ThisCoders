@@ -121,7 +121,7 @@
                <img class="logoimg" src="images/related/youtube.png" style="width: 50px; height: 50px; float: left;">
                <img class="logoimg" src="images/related/users.png" style="width: 50px; height: 50px; float: left;">
             </div>
-            <a href="https://www.iei.or.kr/login/login.kh;jsessionid=6F05F7DD07C5F6D943D68D211B953C71" class="github-corner" id="catloge">
+            <a href="<%=request.getContextPath() %>/views/common/main.jsp" class="github-corner" id="catloge">
                <svg width="200" height="200" viewBox="0 0 250 250" style="fill: yellow; color:black; position: fixed; top: 0; border: 0; right: 0; ">
                   <path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path>
                   <path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2" fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"></path>
