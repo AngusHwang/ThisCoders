@@ -31,7 +31,7 @@ public class MemberDao {
 		PreparedStatement pstmt = null;
 		ResultSet rset = null;
 		
-		String query = prop.getProperty("idCheck");
+		String query = prop.getProperty("userCheck");
 		Member loginUser = null;
 		
 		try {
@@ -43,13 +43,13 @@ public class MemberDao {
 			
 			if(rset.next()) {
 				loginUser = new Member(
-						rset.getString("USERID"),
-						rset.getString("USERPWD"),
-						rset.getString("USERNAME"), 
-						rset.getString("USERBIRTHDAY"), 
-						rset.getString("USEREMAIL"), 
-						rset.getString("USERADDR"), 
-						rset.getString("USERPHONE"), 
+						rset.getString("USER_ID"),
+						rset.getString("USER_PWD"),
+						rset.getString("USER_NAME"), 
+						rset.getString("USER_BIRTHDAY"), 
+						rset.getString("USER_EMAIL"), 
+						rset.getString("USER_ADDR"), 
+						rset.getString("USER_PHONE"), 
 						rset.getString("USER_ADD_CERTI"), 
 						rset.getString("USER_ADD_CAREER"),
 						rset.getString("USER_ADD_AWARD"),
